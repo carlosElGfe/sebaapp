@@ -1,0 +1,91 @@
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+       <%=link_to "Log in", new_user_session_path%>
+
+<% order = Order.where(id:cookies[:current_order_idd]).first%>
+<div class="row" style="margin-top:20px">
+  <div class="col-6" >
+  <h3>Por Confirmar</h3>
+  <table class="table table-bordered">
+  <tr>
+    <th>#</th>
+    <th>Cuando se hizo</th>    
+    <th>Quien la hizo</th>
+    <th>Confirmar Pedido</th>
+  </tr>
+    <%cont = 1%>
+  <%Order.where(almost:true).where(finished:false).each do |order|%>
+  <tr>
+    <td><%=cont%></td><%cont += 1%>
+    <td><%=order.created_at.to_date%></td>    
+    <td><%=order.customer.name%></td>
+    <td><%= link_to "Aprobar", ready_path(order.id),method: :post,class: ["btn", "btn-success"] %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+    <div class="col-6" >
+      <h3>Confirmados Por Entregar</h3>
+  <table class="table table-bordered">
+  <tr>
+    <th>#</th>
+    <th>Quien la hizo</th>    
+    <th>Comuna</th>
+    <th>Donde?</th>
+    <th>Despachar Pedido</th>
+    <th>Eliminar</th>
+  </tr>
+    <%cont = 1%>
+  <%Order.where(finished:true).each do |order|%>
+  <tr>
+    <td><%=cont%></td><%cont += 1%>
+    <td><%=order.customer.name%></td>
+        <td><%=order.customer.comuna%></td>    
+    <td><%=order.customer.adress%></td>
+    <td><%= link_to "Despachar", disp_path(order.id),method: :post,class: ["btn", "btn-primary"] %></td>
+    <td><%= link_to "Eliminar", elim_path(order.id),class: ["btn", "btn-danger"] %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+</div>
+<div class="row" style="margin-top:20px">
+<div class="col-6" >
+      <h3>Entregados</h3>
+  <table class="table table-bordered">
+  <tr>
+    <th>#</th>
+    <th>Cuando se hizo</th>    
+    <th>Quien la hizo</th>
+    <th>Eliminar Registro</th>
+  </tr>
+    <%cont = 1%>
+  <%Order.where(copy:true).each do |order|%>
+  <tr>
+    <td><%=cont%></td><%cont += 1%>
+    <td><%=order.created_at.to_date%></td>    
+    <td><%=order.customer.name%></td>
+    <td><%= link_to "Eliminar", elim2_path(order.id),class: ["btn", "btn-danger"] %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+  <div class="col-6" >
+
+<ul class="list-group">
+  <li class="list-group-item">Estadisticas</li>
+  <li class="list-group-item list-group-item-primary">Items Vendidos: <%= @items_saled%></li>
+  <li class="list-group-item list-group-item-secondary">Computadores registrados en la base de datos: <%=Customer.count %></li>
+  <li class="list-group-item list-group-item-success">Visitas diarias <%= Order.where("updated_at BETWEEN ? AND ?", Time.zone.now.beginning_of_day, Time.zone.now.end_of_day).where(copy:false).count%></li>
+  <li class="list-group-item list-group-item-danger">Visitas semanales <%= Order.where("updated_at BETWEEN ? AND ?", Time.zone.now.beginning_of_week, Time.zone.now.end_of_week).where(copy:false).count%></li>
+  <li class="list-group-item list-group-item-warning">Visitas mensuales <%= Order.where("updated_at BETWEEN ? AND ?", Time.zone.now.beginning_of_month, Time.zone.now.end_of_month).where(copy:false).count%></li>
+  <li class="list-group-item list-group-item-info">Carritos de compra que nunca depositaron <%= Order.where(copy:false).where(disp:false).where(almost:false).where(finished:false).count%></li>
+  <li class="list-group-item list-group-item-light">Venta item 1: <%= @venta_id_1%></li>
+    <li class="list-group-item list-group-item-light">Venta item 2: <%= @venta_id_2%></li>
+  <li class="list-group-item list-group-item-light">Venta item 3: <%= @venta_id_3%></li>
+  <li class="list-group-item list-group-item-light">Venta item 4: <%= @venta_id_4%></li>
+  <li class="list-group-item list-group-item-light">Venta item 5: <%= @venta_id_5%></li>
+  <li class="list-group-item list-group-item-light">Venta item 6: <%= @venta_id_6%></li>
+</ul>
+</div>
+</div>

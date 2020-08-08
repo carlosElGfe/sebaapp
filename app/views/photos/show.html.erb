@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+<% if @photo.picture.attached? %>
+  <%= image_tag @photo.picture.variant(resize_to_limit: [100, 100])%>
+<% end %>
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

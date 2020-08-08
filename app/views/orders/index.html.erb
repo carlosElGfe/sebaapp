@@ -1,0 +1,53 @@
+<div style="marign-left:310px">
+<div class="row" style="margin-top:20px">
+  <div class="col-3" >
+  <%cookies_to_show = Tree.first(2)%>
+      <div class="card-group" style="margin-left:10px">
+      <%cookies_to_show.each do |cookie|%>
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%=cookie.name%></h5>
+              <%=image_tag("cookie.jpg",:size => "170x170") %>
+              <p class="card-text"> </p>
+              <%= link_to "Add",add_item_last_path(2),class: ["btn", "btn-primary"] %>
+            </div>
+          </div>
+            <%end%>
+        </div>
+      </div>
+    <div class="col-9">
+    <div style="margin-right:25px">
+    <table class="table table-hover" style="background-color: #f2f2f2;">
+    <tr>
+    <th>#</th>
+    <th>Galleta</th>
+    <th>Precio</th>
+    <th>Eliminar</th>
+    </tr>
+    <% cont = 1%>
+      <% @trays.each do |tray|%>
+        <tr>
+        <td><%= cont%></td><%cont+=1%>
+        <td><%=tray.tree.name%></td>
+        <td><%= tray.tree.price%></td>
+        <td><%= link_to "X", eliminate_item_path(tray.id),class: ["btn", "btn-danger"]%></td>
+        </tr>
+      <%end%>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>TOTAL</td>
+        <td><%= @total%></td>
+      </tr>
+      </table>
+          <%= link_to "Pagar", pay_path(@order_id),class: ["btn", "btn-primary"]%>
+
+      </div>
+</div>
+<div class="row" style="margin-top:40px">
+<div class="col-3" >
+      </div> 
+    <div class="col-9">
+    </div>
+</div>
+</div>

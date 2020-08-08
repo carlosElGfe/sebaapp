@@ -1,0 +1,13 @@
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+         <% if(cookie.image.present?)%>
+        <%=link_to image_tag(cookie.image,:size => "400x400"),url_for(cookie.image) %>
+        <% end %>
+        <p class="card-text">Cookie example description <%=cookie.id%></p>
+        <a href="#" class="btn btn-primary">Add</a>
+      </div>
+    </div>
+  </div>
+  

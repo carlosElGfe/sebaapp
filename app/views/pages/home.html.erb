@@ -1,0 +1,140 @@
+                 <div class="row" style="background-image: url(<%= image_path 'Banner.jpg' %>)">
+   
+    <%=video_tag "promo.mp4", size: "1908x400",:controls => true  %>
+   
+</div>
+<div class="row" style="height:360px; background-image: url(<%= image_path 'nyc2.jpg' %>)">
+              <div class="col-4">
+    </div>
+    
+    <div class="col-8">
+    <div class="card" style="width: 39rem; margin-top:45px; margin-bottom:20px">
+      <div class="card-body">
+        <h5 class="card-title">Nosotros</h5>
+        <p class="card-text">Somos un emprendimiento joven que busca mezclar los sabores y cultura neoyorquina para llevarlos a la puerta de tu casa. <br>
+Somos seductores, audaces y no tenemos miedo a decir las cosas como son. Nos especializamos en la venta de kits para preparar galletas, con ingredientes de alta calidad que garantizan un resultado increible. Nos encanta lo dulce, y por sobre todo la repostería tendencial.<br> 
+Somos fieles creyentes de que cualquiera puede lograr ser un gran chef si se lo propone.<br>
+</p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+<div class="row" style="background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+  <div class="col-3">
+  </div>
+  <div class="col-3">
+  <div class="card" style="margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+    <div class="card-body">
+        <h5 class="card-title">Kit de Chocolate Chips</h5>
+        <%=image_tag("Chips_edited.jpg",:size => "400x400") %>
+        <p class="card-text">Nuestro baking kit estrella para hacer en casa, chips de chocolate semi-amargos en base de galleta extra-goey, ¡Altamente adictivo!</p>
+        <%= link_to "Add",add_item_path(1),class: ["btn", "btn-primary"] %>
+    </div>
+  </div>
+  </div>
+   <div class="col-3">
+      <div class="card" style="margin-top:20px;background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+         <div class="card-body">
+            <h5 class="card-title">Kit de Double Chocolate</h5>
+            <%=image_tag("Double_edited.jpg",:size => "400x400") %>
+            <p class="card-text">La mezcla perfecta para los amantes del chocolate, base de chocolate amargo tipo brownie con chips de chocolate blanco y negro, ¡Impresionante!</p>
+            <%= link_to "Add",add_item_path(2),class: ["btn", "btn-primary"] %>
+         </div>
+      </div>
+   </div>
+   <div class="col-3">
+   </div>
+</div>
+<div class="row" style="background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+  <div class="col-3">
+  </div>
+  <div class="col-3">
+  <div class="card" style="margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+    <div class="card-body">
+        <h5 class="card-title">Kit de Red Velvet</h5>
+        <%=image_tag("Red_edited.jpg",:size => "400x400") %>
+        <p class="card-text">El famoso red velvet a base de vainilla y <br>chocolate amargo con chips de chocolate blanco, ¡Espectaculares!</p>
+        <%= link_to "Add",add_item_path(3),class: ["btn", "btn-primary"] %>
+    </div>
+  </div>
+  </div>
+   <div class="col-3">
+      <div class="card" style="margin-top:20px;background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+         <div class="card-body">
+            <h5 class="card-title">Kit de Oatmeal Cranberry</h5>
+            <%=image_tag("Cranberry_edited.jpg",:size => "400x400") %>
+            <p class="card-text">Exquisita galleta a base de avena y harina integral y <br>cranberries, siguiendo una línea más liviana pero igualmente exquisita, ¡Imperdible!</p>
+            <%= link_to "Add",add_item_path(4),class: ["btn", "btn-primary"] %>
+         </div>
+      </div>
+   </div>
+   <div class="col-3">
+   </div>
+</div>
+<div class="row" style="background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+  <div class="col-3">
+  </div>
+  <div class="col-3">
+  <div class="card" style="margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+    <div class="card-body">
+        <h5 class="card-title">Kit de Oatmeal Chocolate</h5>
+        <%=image_tag("AvenaChocolate_edited.jpg",:size => "400x400") %>
+        <p class="card-text">Exquisita galleta a base de avena y harina integral y chips de chocolate amargo, siguiendo una línea más liviana pero igualmente exquisita, ¡Imperdible!</p>
+        <%= link_to "Add",add_item_path(5),class: ["btn", "btn-primary"] %>
+    </div>
+  </div>
+  </div>
+   <div class="col-3">
+      <div class="card" style="margin-top:20px;background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+         <div class="card-body">
+            <h5 class="card-title">Kit de Caramelized White Chocolate</h5>
+            <%=image_tag("White_edited.jpg",:size => "400x400") %>
+            <p class="card-text">Galleta inédita para los cookie-monsters, extra-goey clásico relleno con chocolate blanco caramelizado, ¡Tienes que probarla!</p>
+            <%= link_to "Add",add_item_path(6),class: ["btn", "btn-primary"] %>
+         </div>
+      </div>
+   </div>
+   <div class="col-3">
+   </div>
+</div>
+<div class="row" style="padding-left:500px;   background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+
+      <div class="card-group">
+        <div class="card" style="width:29rem; margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+            <div class="card-body">
+              <h5 class="card-title">Kit de Vegan Chocolate Chips</h5>
+              <%=image_tag("Vegan_edited.jpg",:size => "400x400") %>
+              <p class="card-text">Nuestro baking kit estrella recreado en su formato vegan. Chips de chocolate veganos en masa extra-goey. Irresistible.</p>
+              <%= link_to "Add",add_item_path(7),class: ["btn", "btn-primary"] %>
+            </div>
+        </div>
+     </div>
+</div>
+<div class="row" style="height:220px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+            <%=image_tag("ripped.png",:size => "1920x400") %>
+
+
+</div>
+<div class="row" style="height:800px; background-image: url(<%= image_path 'fondonegro.jpeg' %>)">
+            <div class="col-3"><body>
+  <p style="color:white;font-size:24px;margin-top:660px" >Contacto: rushbakerychile@gmail.com
+Siguenos: @Rush.Bakery <br>
+Terminos Despachos</p>
+</body></div>
+            <div class="col-3">     <div style="margin-top:40px">      <%=image_tag("re.png",:size => "400x350") %></div>
+</div>
+            <div class="col-3"><div style="margin-top:240px">      <%=image_tag("ro.png",:size => "400x350") %></div></div>
+            <div class="col-3" >
+            <div style="margin-left:52px; margin-top:600px">
+            <%=image_tag("Mano.png",:size => "400x200") %>
+            </div>
+            </div>
+
+
+</div>
+
+Todos los derechos reservados © Rush Bakery SpA
+          <%= link_to "Admin", new_user_session_path%>
+

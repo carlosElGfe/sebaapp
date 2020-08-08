@@ -1,0 +1,88 @@
+<div style="marign-left:310px">
+<div class="row" style="margin-top:20px">
+<div class="col-2" >
+</div>
+  <div class="col-3" >
+  <%customer = Customer.where(id:cookies[:customer_idd]).first%>
+<div style="margin-left:25px">
+<div class="alert alert-success" id="notice" >
+<%= notice %></div>
+    <%= render partial: 'customers/form', locals: {customer: customer} %>
+    </div>
+  <div class="row" style="margin-left:20px">
+      <div class="card-group" >
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Kit de Caramelized White Chocolate</h5>
+              <%=image_tag("White_edited.jpg",:size => "170x170") %>
+              <p class="card-text"> </p>
+              <%= link_to "Add",add_item_last_path(6),class: ["btn", "btn-primary"] %>
+            </div>
+          </div>
+           <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Kit de Double Chocolate</h5>
+              <%=image_tag("Double_edited.jpg",:size => "170x170") %>
+              <p class="card-text"> </p>
+              <%= link_to "Add",add_item_last_path(2),class: ["btn", "btn-primary"] %>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row" style="margin-left:20px">
+        <div class="card">
+        <div class="card-header">Informacion Deposito
+        </div>
+        <div class="card-body">Esta es la informacion ejemplo del deposito bla bla bl</div>
+        </div>
+</div>
+      </div>
+      
+    <div class="col-5">
+
+    <table class="table table-bordered">
+     <thead>
+    <tr>
+    <th>Item</th>
+    <th>Eliminar?</th>
+    <th>Cantidad</th>
+    </tr>
+     </thead>
+       <tbody>
+
+        <%@trees_ids.each do |tray|%>
+    <tr>
+    <td>    <%= Tree.where(id:tray).first.name%></td>
+    <td>    <%= link_to "-1", eliminate_item_path(Road.where(order_id:@order_id).where(tree_id:tray).first.id),class: ["btn", "btn-danger"]%></td>
+    <td>   <span class="badge badge-primary badge-pill"><%= Road.where(order_id:@order_id).where(tree_id:tray).count%></span></td>
+    </tr>
+      <%end%>
+
+  </tbody>
+
+</table>
+  $ <%=@total%>
+
+<div class="card" style="margin-top:20px">
+
+<div class="card-header">
+Informacion Personal
+</div>
+  <div class="card-body">
+  <%= link_to "Continuar", pending_path(),class: ["btn", "btn-success"]%>
+    <%= link_to "Cancelar pago", customer_orders_path(cookies[:customer_idd],cookies[:current_order_idd]),class: ["btn", "btn-danger"]%>
+
+  </div>
+</div>
+  
+    </div>
+</div>
+  <div class="col-2" >
+</div>
+<div class="row" style="margin-top:40px">
+<div class="col-3" >
+      </div> 
+    <div class="col-9">
+    </div>
+</div>
+</div>

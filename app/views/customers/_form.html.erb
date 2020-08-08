@@ -1,0 +1,40 @@
+<div class="card border-dark mb-3" style="padding:7px">
+<%= form_with(model: customer, local: false) do |form| %>
+<li style="list-style: none">
+<%= form.label :name, "Nombre" %>
+<%= form.text_field :name %>
+<li style="list-style: none">
+<%= form.label :last_name, "Apellidos" %>
+<%= form.text_field :last_name %>
+<li style="list-style: none">
+<%= form.label :phone, "Telefono" %>
+<%= form.text_field :phone %>
+<li style="list-style: none">
+<%= form.label :adress, "Direccion Entrega" %>
+<%= form.text_field :adress,:size=>"20",:height=>"30" %>
+<li style="list-style: none">
+
+<%= form.label :comuna, "Comuna" %>
+<%= form.collection_select :comuna, @comunas, :to_s, :to_s %>
+<li style="list-style: none">
+
+<%= form.label :ident, "Email Transferencia" %>
+<%= form.text_field :ident %>
+</ul>
+  <% if customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+        <% customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions" style="margin-top:20px">
+    <%= form.submit "Actualizar Info",class: ["btn", "btn-primary"], style:["padding-left:40px; padding-right:40px"]%>
+  </div>
+<% end %>
+</div>

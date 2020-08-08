@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sebaapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<nav class="navbar navbar-dark " style="background-color: 	#000000; width:100%">
+      <div class="container">
+                <%= image_tag("logo.png",:size => "95x95") %>
+        <a class="navbar-brand" href="<%= root_path %>">Rush Bakery!</a>
+        <a class="navbar-brand" href="<%=pay_path(Order.where(id:cookies[:current_order_idd]).first.id)%>">¡Haz tu pedido!</a>
+        <a class="navbar-brand" href="#">Tips</a>
+        <a class="navbar-brand" href="#">Contacto</a>
+        <%if current_user%>
+          <%if current_user.admin%>
+            <%= link_to "Admin pannel", search_path%>
+            <%= link_to 'Sign out', destroy_user_session_path , method: :delete %>
+          <% end %>
+        <% end %>
+ <span class="d-inline card p-1 shopping_cart">
+ <%if cookies[:customer_idd].present?%>
+ <% cart_item_count = Road.where(order_id:cookies[:current_order_idd]).count%>
+ <%puts (cart_item_count.to_s)%>
+ <%else%>
+ <%cart_item_count = 2%>
+ <%end%>
+        <%= content_tag :a, { href: pay_path(Order.where(id:cookies[:current_order_idd]).first.id) } do %>
+          <%= image_tag("the.jpg", width: "24em") %>
+          <% unless cart_item_count == 0%>
+          <span class="badge badge-danger"><%= cart_item_count %></span>
+          <% end %>
+        <% end %>
+      </span>
+      </div>
+    </nav>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+
+</html>

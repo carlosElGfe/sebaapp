@@ -1,0 +1,29 @@
+<%= form_with(model: cooky, local: true) do |form| %>
+ <div class="form-group">
+  <%= form.label :image, "Image"%>
+  <%= form.file_field :image%>
+</div>
+ <div class="form-group">
+      <%= form.label :price %>
+      <%= form.text_field :price, class: "form-control" %>
+    </div>
+ <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+  <% if cooky.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cooky.errors.count, "error") %> prohibited this cooky from being saved:</h2>
+
+      <ul>
+        <% cooky.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

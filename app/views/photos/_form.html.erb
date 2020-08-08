@@ -1,0 +1,27 @@
+<%= form_with(model: photo, local: true) do |form| %>
+<div class="field">
+  <%= form.label :picture, "Image"%>
+  <%= form.file_field :picture%>
+</div>
+<% Cookie.all.each do |u|%>
+    <ul>
+        <li><%= form.radio_button(:cookie_id, u.id) %>
+        <%= label_tag(:cookie_id, Cookie.where(id:u.id).first.name) %></li>
+    </ul>
+  <%end%>
+  <% if photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+        <% photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
