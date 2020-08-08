@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "sebaapp"
-set :repo_url, "git@github.com:username/myapp.git"
+set :repo_url, "https://github.com/carlosElGfe/sebaapp.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
