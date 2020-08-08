@@ -4,6 +4,6 @@ class UserMailer < ApplicationMailer
     def welcome_email
       @user = params[:user]
       @url  = 'http://localhost:3000'
-      mail(to: @user.ident, subject: 'Welcome to My Awesome Site')
+      mail(to: @user.ident, subject: 'Rush Bakery-Pago realizado, esperando confirmacion')
     end
 end
