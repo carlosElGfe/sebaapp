@@ -69,6 +69,6 @@ class TreesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tree_params
-      params.fetch(:tree, {}).permit(:name, :price, :image)
+      params.fetch(:tree, {}).permit(:name, :price)
     end
 end
