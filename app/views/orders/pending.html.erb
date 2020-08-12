@@ -1,6 +1,6 @@
 
 
-  <div class="row" style="height:270px;background-image: url(<%= image_path 'Banner.jpg' %>)">
+  <div class="row" style="height:350px;background-image: url(<%= image_path 'Banner.jpg' %>)">
     <div class="col-4">
     </div>
     
@@ -8,10 +8,13 @@
     <div class="card" style="width: 39rem; margin-top:20px; margin-bottom:20px">
       <div class="card-body">
         <h5 class="card-title">Informacion Deposito</h5>
-<span>Cuenta: xxx-XXX-xxx <br>
-  Rut:  xxx.xxx.xxx-x<br>
-  mail: xx@xxx.xx<br>
-  Asunto: Pago mail (Mail ingresado)<span>
+<span>Banco:Banco Edwards<br>
+Tipo: Cuenta corriente<br>
+Cuenta:  8090015109 <br>
+  Rut:  19.636.903-1<br>
+  Nombre: Sebastian Hirsch<br>
+  mail: Ventasrushbakery@gmail.com<br>
+  Asunto: Pago mail "<strong><%= Customer.where(id:cookies[:customer_idd]).first.ident%><strong>"<span>
   <%= link_to "Listo!", wait_path(cookies[:current_order_idd]),class: ["btn", "btn-primary"],style: ["margin-left:380px; width:130px"]%>
       </div>
     </div>

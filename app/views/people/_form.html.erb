@@ -1,0 +1,28 @@
+<%= form_with(model: person, local: true) do |form| %>
+<div style="margin-left:340px">
+<ul class="list-group">
+<li class="list-group-item">
+<%= form.label :name%>
+<%= form.text_field :name%></li>
+<li class="list-group-item">
+<%= form.label :password%>
+<%= form.text_field :password%></li>
+<li class="list-group-item">
+<%= form.label :email%>
+<%= form.text_field :email%></li></ul>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

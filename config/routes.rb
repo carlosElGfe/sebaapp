@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'elim/:id', to: "orders#elim", as: 'elim'
   get 'elim2/:id', to:"orders#elim2", as: 'elim2'
   get 'pending', to: "orders#pending", as: 'pending'
+  resources :users
   resources :customers do
     resources :orders
   end

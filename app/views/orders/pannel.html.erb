@@ -11,6 +11,7 @@
     <th>#</th>
     <th>Cuando se hizo</th>    
     <th>Quien la hizo</th>
+     <th>Total $$</th>
     <th>Confirmar Pedido</th>
   </tr>
     <%cont = 1%>
@@ -19,7 +20,14 @@
     <td><%=cont%></td><%cont += 1%>
     <td><%=order.created_at.to_date%></td>    
     <td><%=order.customer.name%></td>
-    <td><%= link_to "Aprobar", ready_path(order.id),method: :post,class: ["btn", "btn-success"] %></td>
+    <%tott = 0%>
+    <%order.content.split(";").each do |de|%>
+    <%olg = Tree.where(id:de).first.price.split("$")[1]%>
+    <% tott += olg.to_i%>
+    <% end%>
+    <td><%= tott%></td>
+    <td><%= link_to "Aprobar", ready_path(order.id),method: :get,class: ["btn", "btn-success"] %></td>
+        
     </tr>
   <% end %>
   </table>
@@ -89,4 +97,3 @@
 </ul>
 </div>
 </div>
-<%= link_to "crear",new_tree_path() %>

@@ -54,6 +54,18 @@ def elim
   end
 end
 def pending
+  if (Customer.where(id:cookies[:customer_idd]).first.ident== nil || Customer.where(id:cookies[:customer_idd]).first.ident== "")
+    flash.now[:notice] = 'Ingesar un Email'
+    respond_to do |format|
+      format.html { redirect_to pay_path(Order.where(id:cookies[:current_order_idd]).first.id)}
+    end
+  elsif (Customer.where(id:cookies[:customer_idd]).first.adress== nil || Customer.where(id:cookies[:customer_idd]).first.adress== "")
+    flash.now[:notice] = 'Ingesar una direccion de entrega'
+    respond_to do |format|
+      format.html { redirect_to pay_path(Order.where(id:cookies[:current_order_idd]).first.id)}
+      
+    end
+  end
 end
 def elim2
   if current_user.admin
@@ -150,8 +162,13 @@ def ready
     o.almost = true
     o.disp = false
     o.save!
-    respond_to do |format|
-      format.html { redirect_to search_path}
+    begin
+      @user = Customer.where(id:o.customer_id).first
+      UserMailer.with(user: @user).ready_email.deliver_now
+      respond_to do |format|
+          format.html { redirect_to search_path}
+      end
+    rescue => exception
     end
   end
 end
@@ -175,6 +192,15 @@ def pay
     end
   end
   @trees_ids = @trees_ids.uniq
+  if (Customer.where(id:cookies[:customer_idd]).first.ident== nil || Customer.where(id:cookies[:customer_idd]).first.ident== "")
+    flash.now[:notice] = 'Ingesar un Email'
+  
+  end
+  if (Customer.where(id:cookies[:customer_idd]).first.adress== nil || Customer.where(id:cookies[:customer_idd]).first.adress== "")
+    flash.now[:notice] = 'Ingesar una direccion de entrega'
+  
+  end
+
 end
   # GET /orders/1
   # GET /orders/1.json

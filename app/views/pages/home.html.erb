@@ -1,3 +1,26 @@
+                                  <div class="row">
+
+                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" style="width:100%">
+    <div class="carousel-item active">
+    <%= image_tag("B1", class: "d-block w-100",alt: "First slide")%>
+    </div>
+    <div class="carousel-item">
+    <%= image_tag("B2", class: "d-block w-100",alt: "Second slide")%>
+    </div>
+    <div class="carousel-item">
+    <%= image_tag("B3", class: "d-block w-100",alt: "Third slide", style: "width:100%")%>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div></div>
                  <div class="row" style="background-image: url(<%= image_path 'Banner.jpg' %>)">
    
     <%=video_tag "promo.mp4", size: "1908x400",:controls => true  %>
@@ -22,95 +45,122 @@ Somos fieles creyentes de que cualquiera puede lograr ser un gran chef si se lo 
   </div>
 </div>
 <div class="row" style="background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
-  <div class="col-3">
+  <div class="col-2">
   </div>
-  <div class="col-3">
+  <div class="col-4">
   <div class="card" style="margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
     <div class="card-body">
         <h5 class="card-title">Kit de Chocolate Chips</h5>
-        <%=image_tag("Chips_edited.jpg",:size => "400x400") %>
+        <%=image_tag("Chips_edited.jpg",:size => "316x316") %>
         <p class="card-text">Nuestro baking kit estrella para hacer en casa, chips de chocolate semi-amargos en base de galleta extra-goey, ¡Altamente adictivo!</p>
-        <%= link_to "Add",add_item_path(1),class: ["btn", "btn-primary"] %>
+        <!-- Button trigger modal -->
+        <%= link_to "Agregar al carrito",add_item_path(1), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Item Agregado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Desea pagar?
+      </div>
+      <div class="modal-footer">
+                  <%= link_to "Pagar!",pay_path(Order.where(id:cookies[:current_order_idd]).first.id),class: ["btn btn-success"] %>
+
+      <%= link_to "Seguir comprando",root_path,class: ["btn btn-dark"] %>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   </div>
   </div>
-   <div class="col-3">
+   <div class="col-4">
       <div class="card" style="margin-top:20px;background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
          <div class="card-body">
             <h5 class="card-title">Kit de Double Chocolate</h5>
-            <%=image_tag("Double_edited.jpg",:size => "400x400") %>
+            <%=image_tag("Double_edited.jpg",:size => "316x316") %>
             <p class="card-text">La mezcla perfecta para los amantes del chocolate, base de chocolate amargo tipo brownie con chips de chocolate blanco y negro, ¡Impresionante!</p>
-            <%= link_to "Add",add_item_path(2),class: ["btn", "btn-primary"] %>
+        <%= link_to "Agregar al carrito",add_item_path(2), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
          </div>
       </div>
    </div>
-   <div class="col-3">
+   <div class="col-2">
    </div>
 </div>
 <div class="row" style="background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
-  <div class="col-3">
+  <div class="col-2">
   </div>
-  <div class="col-3">
+  <div class="col-4">
   <div class="card" style="margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
     <div class="card-body">
         <h5 class="card-title">Kit de Red Velvet</h5>
-        <%=image_tag("Red_edited.jpg",:size => "400x400") %>
+        <%=image_tag("Red_edited.jpg",:size => "316x316") %>
         <p class="card-text">El famoso red velvet a base de vainilla y <br>chocolate amargo con chips de chocolate blanco, ¡Espectaculares!</p>
-        <%= link_to "Add",add_item_path(3),class: ["btn", "btn-primary"] %>
+        <%= link_to "Agregar al carrito",add_item_path(3), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
     </div>
   </div>
   </div>
-   <div class="col-3">
+   <div class="col-4">
       <div class="card" style="margin-top:20px;background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
          <div class="card-body">
             <h5 class="card-title">Kit de Oatmeal Cranberry</h5>
-            <%=image_tag("Cranberry_edited.jpg",:size => "400x400") %>
+            <%=image_tag("Cranberry_edited.jpg",:size => "316x316") %>
             <p class="card-text">Exquisita galleta a base de avena y harina integral y <br>cranberries, siguiendo una línea más liviana pero igualmente exquisita, ¡Imperdible!</p>
-            <%= link_to "Add",add_item_path(4),class: ["btn", "btn-primary"] %>
+        <%= link_to "Agregar al carrito",add_item_path(4), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
          </div>
       </div>
    </div>
-   <div class="col-3">
+   <div class="col-2">
    </div>
 </div>
 <div class="row" style="background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
-  <div class="col-3">
+  <div class="col-2">
   </div>
-  <div class="col-3">
+  <div class="col-4">
   <div class="card" style="margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
     <div class="card-body">
         <h5 class="card-title">Kit de Oatmeal Chocolate</h5>
-        <%=image_tag("AvenaChocolate_edited.jpg",:size => "400x400") %>
+        <%=image_tag("AvenaChocolate_edited.jpg",:size => "316x316") %>
         <p class="card-text">Exquisita galleta a base de avena y harina integral y chips de chocolate amargo, siguiendo una línea más liviana pero igualmente exquisita, ¡Imperdible!</p>
-        <%= link_to "Add",add_item_path(5),class: ["btn", "btn-primary"] %>
+        <%= link_to "Agregar al carrito",add_item_path(5), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
     </div>
   </div>
   </div>
-   <div class="col-3">
+   <div class="col-4">
       <div class="card" style="margin-top:20px;background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
          <div class="card-body">
             <h5 class="card-title">Kit de Caramelized White Chocolate</h5>
-            <%=image_tag("White_edited.jpg",:size => "400x400") %>
+            <%=image_tag("White_edited.jpg",:size => "316x316") %>
             <p class="card-text">Galleta inédita para los cookie-monsters, extra-goey clásico relleno con chocolate blanco caramelizado, ¡Tienes que probarla!</p>
-            <%= link_to "Add",add_item_path(6),class: ["btn", "btn-primary"] %>
+        <%= link_to "Agregar al carrito",add_item_path(6), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
          </div>
       </div>
    </div>
-   <div class="col-3">
+   <div class="col-2">
    </div>
 </div>
-<div class="row" style="padding-left:500px;   background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
-
-      <div class="card-group">
+<div class="row" style=" background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
+<div class="col-2"></div>
+<div class="col-4"><div class="card-group">
         <div class="card" style="width:29rem; margin-top:20px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
             <div class="card-body">
               <h5 class="card-title">Kit de Vegan Chocolate Chips</h5>
-              <%=image_tag("Vegan_edited.jpg",:size => "400x400") %>
+              <%=image_tag("Vegan_edited.jpg",:size => "316x316") %>
               <p class="card-text">Nuestro baking kit estrella recreado en su formato vegan. Chips de chocolate veganos en masa extra-goey. Irresistible.</p>
-              <%= link_to "Add",add_item_path(7),class: ["btn", "btn-primary"] %>
+        <%= link_to "Agregar al carrito",add_item_path(7), {:remote => true, :class => "btn btn-dark", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
             </div>
         </div>
-     </div>
+     </div></div>
+<div class="col-3"></div>
+<div class="col-3"></div>
+      
 </div>
 <div class="row" style="height:220px; background-image: url(<%= image_path 'fondoblanco.jpeg' %>)">
             <%=image_tag("ripped.png",:size => "1920x400") %>
@@ -119,22 +169,18 @@ Somos fieles creyentes de que cualquiera puede lograr ser un gran chef si se lo 
 </div>
 <div class="row" style="height:800px; background-image: url(<%= image_path 'fondonegro.jpeg' %>)">
             <div class="col-3"><body>
-  <p style="color:white;font-size:24px;margin-top:660px" >Contacto: rushbakerychile@gmail.com
+  <p style="color:white;font-size:18px;margin-top:660px" >Contacto: rushbakerychile@gmail.com<br>
 Siguenos: @Rush.Bakery <br>
-Terminos Despachos</p>
+Terminos Despachos <br>Todos los derechos reservados © Rush Bakery SpA
+          <%= link_to "Admin", new_user_session_path%></p>
 </body></div>
-            <div class="col-3">     <div style="margin-top:40px">      <%=image_tag("re.png",:size => "400x350") %></div>
+            <div class="col-3">     <div style="margin-top:40px">      <%=image_tag("re.png",:size => "300x250") %></div>
 </div>
-            <div class="col-3"><div style="margin-top:240px">      <%=image_tag("ro.png",:size => "400x350") %></div></div>
+            <div class="col-3"><div style="margin-top:240px">      <%=image_tag("ro.png",:size => "300x250") %></div></div>
             <div class="col-3" >
             <div style="margin-left:52px; margin-top:600px">
             <%=image_tag("Mano.png",:size => "400x200") %>
             </div>
             </div>
 
-
 </div>
-
-Todos los derechos reservados © Rush Bakery SpA
-          <%= link_to "Admin", new_user_session_path%>
-
